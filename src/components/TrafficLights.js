@@ -1,17 +1,16 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Display from "./Display";
 
-const TrafficLights = () => {
-  const stages = {
-    stop: { red: true, amber: false, green: false, next: "readyToGo" },
-    readyToGo: { red: true, amber: true, green: false, next: "go" },
-    go: { red: false, amber: false, green: true, next: "readyToStop" },
-    readyToStop: { red: false, amber: true, green: false, next: "stop" }
-  };
-
+const TrafficLights = ({ stages }) => {
   const [stage, setStage] = useState(stages.stop);
-
   return <Display {...stage} onClick={() => setStage(stages[stage.next])} />;
+};
+
+TrafficLights.propTypes = {
+  stages: PropTypes.shape({
+    next: PropTypes.string
+  })
 };
 
 export default TrafficLights;

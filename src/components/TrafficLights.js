@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Display from "./Display";
 
 const TrafficLights = () => {
@@ -10,8 +10,6 @@ const TrafficLights = () => {
   };
 
   const [stage, setStage] = useState(stages.stop);
-
-  useEffect(() => console.log(stage), [stage]);
 
   return <Display {...stage} onClick={() => setStage(stages[stage.next])} />;
 };
